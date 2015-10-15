@@ -4,4 +4,4 @@ ThreadPool is an implementation of a thread pool in C++. It includes a thread po
 
 This project files are for Visual Studio 2013 and the project requires C++ 11 because of Lambda function usage. 
 
-Note: this code is not intended to be the most optimized version of a thread pool implementation, but rather an implementation without dependencies on other major systems. One optimization that would be necessary for performace would be utilizing a memory manager to execute threads on already allocated memory rather than allocate on the fly.
+Note: this code is not intended to be the most optimized version of a thread pool implementation, but rather an implementation without dependencies on other major systems. One optimization that would improve performance would be utilizing a memory manager to execute threads on already allocated memory rather than allocate on the fly.
