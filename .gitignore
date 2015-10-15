@@ -26,3 +26,10 @@
 *.exe
 *.out
 *.app
+
+# Others
+*.sdf
+*.opensdf
+*.user
+Debug
+Release
