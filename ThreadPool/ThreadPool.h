@@ -50,7 +50,10 @@ class ThreadPool
 {
 public:
 
-	/* Singleton interface. */
+	/* 
+	 * Singleton interface. We will use a singleton here so a programmer can pass off work to a thread 
+	 * pool with relative ease and have minimal dependencies in regards to what is actually being executed.
+	 */
 	static ThreadPool* GetInstance();
 
 	/**

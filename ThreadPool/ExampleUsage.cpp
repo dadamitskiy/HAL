@@ -23,7 +23,6 @@
  */
 
 #include "ThreadPool.h"
-#include <iostream>
 #include <chrono>
 
 /*
@@ -74,7 +73,7 @@ public:
 
 	void OnCompleteCallback()
 	{
-		std::cout << "The thread pool found " << m_iPrimesFound << " primes between 1 and " << m_iRadix << std::endl;
+		printf("The thread pool found %d primes between 1 and %d\n", m_iPrimesFound, m_iRadix);
 	}
 };
 
@@ -83,7 +82,8 @@ int main(int, const char*[])
 	/*
 	 * The thread pool will run work as it gets posted. We'll observe this in a simplistic way. 
 	 */
-	std::cout << "We will first run our tasks asynchronously with the thread pool:\n\n";
+	printf("Let's test how much faster running a thread pool is when compared to not having one at all. We will find the number of prime numbers between 1 and the following 4 numbers: %d, %d, %d, %d.\n\n", 13455, 13999, 13872, 13717);
+	printf("We will first run our tasks asynchronously with the thread pool:\n\n");
 
 	auto timerOnThreadPoolStart = std::chrono::steady_clock::now();
 
@@ -109,8 +109,8 @@ int main(int, const char*[])
 
 	auto timerOnThreadPoolEnd = std::chrono::steady_clock::now();
 
-	std::cout << "\nDepending on how quickly our threads execute, the outputing of the data may be mixed together due to std::cout being called several times before it completes or they complete out of order.";
-	std::cout << "\n\nNow let's run the same test for the same numbers without multithreading.\n\n";
+	printf("\nDepending on which threads execution completes first, the outputing of resulting data may be out of order which is as expected.");
+	printf("\n\nNow let's run the same test for the same numbers without multithreading.\n\n");
 	
 	auto timerOnNoThreadsStart = std::chrono::steady_clock::now();
 
@@ -139,10 +139,10 @@ int main(int, const char*[])
 	auto timerOnNoThreadsEnd = std::chrono::steady_clock::now();
 
 	auto threadsDiff = timerOnThreadPoolEnd - timerOnThreadPoolStart;
-	std::cout << "\n\nExecution time using thread pool: " << std::chrono::duration<double, std::milli>(threadsDiff).count() << " ms" << std::endl;
+	printf("\n\nExecution time using thread pool: %f ms\n", std::chrono::duration<double, std::milli>(threadsDiff).count());
 
 	auto noThreadsDiff = timerOnNoThreadsEnd - timerOnNoThreadsStart;
-	std::cout << "Execution time using no threads: " << std::chrono::duration<double, std::milli>(noThreadsDiff).count() << " ms" << std::endl;
+	printf("Execution time using no thread pool: %f ms\n\n", std::chrono::duration<double, std::milli>(noThreadsDiff).count());
 
 	system("PAUSE");
 	return 0;
