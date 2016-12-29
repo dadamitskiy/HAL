@@ -1,4 +1,6 @@
-# ThreadPool (Soon to become HAL)
+# HAL
+
+HAL release coming soon. Current implementation only holds a Thread Pool class.
 
 ThreadPool is an implementation of a thread pool in C++. It includes a thread pool class as well as a example usage class that times the execution between using the thread pool and not using one. 
 
